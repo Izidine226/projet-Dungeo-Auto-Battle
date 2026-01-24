@@ -2,9 +2,6 @@
 #define GUERRIER_H
 
 #include "Hero.h" 
-#include <iostream>
-
-using namespace std;
 
 class Guerrier : public Hero {
 public:
@@ -27,7 +24,6 @@ public:
         // Bonus Spécial Guerrier : +20% dégâts si PV < 30% 
         if (pv < (pvMax * 0.3)) {
             degats = (int)(degats * 1.2); 
-            cout << "RAGE , " << nom << " est en furie ! Ses degats augmentent !" << endl;
         }
 
         return degats;
