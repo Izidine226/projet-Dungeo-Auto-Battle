@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/zanzine/Desktop/S1/aspectStaticDyna/c++/projet/projet-Dungeo-Auto-Battle",
+      "program": "/Users/zanzine/Desktop/S1/aspectStaticDyna/c++/projet/projet-Dungeo-Auto-Battle/build/Debug/outDebug"
+    }
+  ]
+}

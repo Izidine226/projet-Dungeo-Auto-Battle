@@ -50,6 +50,17 @@ public:
     string getNom() const { return nom; }
     int getPv() const { return pv; }
     int getPvMax() const { return pvMax; }
+    int getAttaque() const { return attaque; }
+
+    // Renvoie le nom de la classe en string
+    string getClasseStr() const {
+        switch (getClasse()) {
+            case 1: return "Guerrier";
+            case 2: return "Mage";
+            case 3: return "Archer";
+            default: return "Inconnu";
+        }
+    }
 
     //Méthodes Virtuelles Pures (Abstraction) 
     
