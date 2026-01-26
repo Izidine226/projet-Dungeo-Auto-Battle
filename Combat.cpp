@@ -101,9 +101,9 @@ void afficherEtatCombat(Joueur& j1, Joueur& j2, int tour) {
     for (size_t i = 0; i < equipe1.size(); ++i) {
         Hero* h = equipe1[i];
         if (h->getPv() > 0) {
-            cout << "    ✅ " << h->getNom() << " (" << h->getPv() << "/" << h->getPvMax() << " PV)\n";
+            cout << "     " << h->getNom() << " (" << h->getPv() << "/" << h->getPvMax() << " PV)\n";
         } else {
-            cout << "    ❌ " << h->getNom() << " (VAINCU)\n";
+            cout << "     " << h->getNom() << " (VAINCU)\n";
         }
     }
 
@@ -113,9 +113,9 @@ void afficherEtatCombat(Joueur& j1, Joueur& j2, int tour) {
     for (size_t i = 0; i < equipe2.size(); ++i) {
         Hero* h = equipe2[i];
         if (h->getPv() > 0) {
-            cout << "    ✅ " << h->getNom() << " (" << h->getPv() << "/" << h->getPvMax() << " PV)\n";
+            cout << "    [VIVANT] " << h->getNom() << " (" << h->getPv() << "/" << h->getPvMax() << " PV)\n";
         } else {
-            cout << "    ❌ " << h->getNom() << " (VAINCU)\n";
+            cout << "    [VAINCU] " << h->getNom() << " (VAINCU)\n";
         }
     }
     cout << "\n";
@@ -136,7 +136,7 @@ int combatEquipes(Joueur& j1, Joueur& j2) {
         return 0;
     }
 
-    cout << "\n🏟️  Le combat oppose " << j1.getNom() << " contre " << j2.getNom() << " !\n";
+    cout << "\n  Le combat oppose " << j1.getNom() << " contre " << j2.getNom() << " !\n";
 
     // Récupération des équipes
     vector<Hero*>& equipe1 = j1.getEquipeSelectionnee();
@@ -154,12 +154,12 @@ int combatEquipes(Joueur& j1, Joueur& j2) {
     while (idx1 < equipe1.size() && idx2 < equipe2.size()) {
         // Vérifier les conditions de victoire avant chaque combat
         if (!j1.aDesHerosVivants()) {
-            cout << "\n🏆 " << j2.getNom() << " remporte l'affrontement !\n";
+            cout << "\nVICTOIRE : " << j2.getNom() << " remporte l'affrontement !\n";
             cout << "   " << j1.getNom() << " n'a plus de heros en vie.\n";
             return 2;
         }
         if (!j2.aDesHerosVivants()) {
-            cout << "\n🏆 " << j1.getNom() << " remporte l'affrontement !\n";
+            cout << "\nVICTOIRE : " << j1.getNom() << " remporte l'affrontement !\n";
             cout << "   " << j2.getNom() << " n'a plus de heros en vie.\n";
             return 1;
         }
@@ -177,19 +177,19 @@ int combatEquipes(Joueur& j1, Joueur& j2) {
             continue;
         }
 
-        cout << "\n⚔️  Combat " << tourCombat << " : " << h1->getNom() << " vs " << h2->getNom() << "\n";
+        cout << "\n Combat " << tourCombat << " : " << h1->getNom() << " vs " << h2->getNom() << "\n";
 
         // Combat 1v1
         int resultat = combat(h1, h2);
 
         // Gestion du résultat
         if (resultat == 1) {
-            cout << "   🏅 " << h1->getNom() << " l'emporte et regagne ses PV !\n";
+            cout << "   " << h1->getNom() << " l'emporte et regagne ses PV !\n";
             // h1 gagne : le héros gagnant regagne ses PV
             h1->soignerCompletement();
             idx2++; // Le héros 2 est éliminé, on passe au suivant
         } else if (resultat == 2) {
-            cout << "   🏅 " << h2->getNom() << " l'emporte et regagne ses PV !\n";
+            cout << "   " << h2->getNom() << " l'emporte et regagne ses PV !\n";
             // h2 gagne : le héros gagnant regagne ses PV
             h2->soignerCompletement();
             idx1++; // Le héros 1 est éliminé, on passe au suivant
@@ -208,10 +208,10 @@ int combatEquipes(Joueur& j1, Joueur& j2) {
 
     // Détermination du gagnant
     if (j1.aDesHerosVivants()) {
-        cout << "\n🎉 VICTOIRE FINALE : " << j1.getNom() << " remporte l'affrontement ! 🎉\n";
+        cout << "\nVICTOIRE FINALE : " << j1.getNom() << " remporte l'affrontement !\n";
         return 1;
     } else {
-        cout << "\n🎉 VICTOIRE FINALE : " << j2.getNom() << " remporte l'affrontement ! 🎉\n";
+        cout << "\nVICTOIRE FINALE : " << j2.getNom() << " remporte l'affrontement !\n";
         return 2;
     }
 }
